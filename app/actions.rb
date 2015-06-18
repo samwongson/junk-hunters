@@ -1,11 +1,7 @@
 # Homepage (Root path)
 get '/' do
   @sales = Sale.all
-  @items = Item.all
-  # @sales.each do |sale|
-  #   @sale = sale
-  #   @items_per_sale = Item.where(sale_id: @sale.id)
-  # end  
+  @items = Item.all 
   erb :index
 end
 
