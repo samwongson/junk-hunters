@@ -1,0 +1,45 @@
+<h1>Post a sale</h1>
+<hr/>
+
+
+<% if @sale && @sale.errors.any? %>
+  <div>
+    <strong>Some issues with your sale, please fix them:</strong>
+    <ul>
+      <% @sale.errors.full_messages.each do |sale| %>
+        <li><%= sale %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form method="post" enctype="multipart/form-data" action="/new">
+  <div>
+    <label>Address:</label>
+    <input type="text" name="address" >
+  </div>
+
+  <div>
+    <label>Start time:</label>
+    <input type="text" name="start_time" >
+  </div>
+
+  <div>
+    <label>End time:</label>
+    <input type="text" name="end_time" >
+  </div>
+
+  <div>
+    <label>Description:</label>
+    <input type="text" name="description">
+  </div>
+
+  <div>
+    <label>Upload image:</label>
+    <input type="file" name="image_path">
+  </div>
+
+
+  
+  <input name="salesubmit" type="submit" value="Submit" >
+</form>
