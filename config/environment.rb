@@ -11,6 +11,8 @@ require 'sinatra/contrib/all' # Requires cookies, among other things
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'rmagick'
+require 'bcrypt'
+
 require_relative '../app/uploaders/image_uploader'
 
 require 'pry'

@@ -47,13 +47,21 @@ get '/users/new' do
 end
 
 post '/users' do
+
+  password_salt = BCrypt::Engine.generate_salt
+  password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
+
   user = User.find_by(username: params[:username])
   # Check that the password entered in the form matches what we have in the database
   if !user.nil?
     @message = "That user already exists. Try a different name."
     erb :'/sign_up'
   else
-    user = User.create(username: params[:username], password: params[:password])
+    password_salt = BCrypt::Engine.generate_salt
+    password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
+
+    user = User.create(username: params[:username], password_salt: password_salt, password: password_hash)
+
     # logged in successfully.
     session[:user_id] = user.id
     redirect "/"
@@ -61,7 +69,7 @@ post '/users' do
 end
 
 get '/login' do
-  redirect '/'
+  redirect '/session/new'
 end
 
 get '/session/new' do
@@ -72,7 +80,7 @@ post '/session' do
   user = User.find_by(username: params[:username])
   # Check that the password entered in the form matches what we have in the database
   if !user.nil?
-    if user.password == params[:password]
+    if user.password == BCrypt::Engine.hash_secret(params[:password], user.password_salt)
       # logged in successfully.
       session[:user_id] = user.id
       redirect "/"
