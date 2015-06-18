@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <!-- Latest compiled and minified CSS -->
-  <!-- <link href="/stylesheets/bootstrap-theme.css" rel="stylesheet"> -->
-  <!-- <link href="/stylesheets/bootstrap.css" rel="stylesheet"> -->
+
   <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
   <link href="/stylesheets/stylesheet.css" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
-  <!-- <link rel="stylesheet" href="/stylesheets/application.css"> -->
+
 
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <!-- // <script src="/javascript/application.js"></script> -->
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+       <script src="/javascript/script.js"></script>
     <script src="/javascript/bootstrap.min.js"></script>
 
   <title>Junk Hunter</title>
 </head> 
 <body>
-<!--Navbar--> 
+
   <div class="navbar navbar-default navbar-fixed-top">   
     <div class="container">    
       <div class="navbar-header"> 
@@ -45,17 +35,14 @@
             <li><a href="/">Register</a></li>
             <li><a href="/">Login</a></li>        
         </ul>
-        <form class="navbar-form navbar-right">      
-
-          <button type="submit" class="btn btn-info logout" action="/">Log Out</button>      
-
-        </form>
-        
-     
+        <form class="navbar-form navbar-right">
+          <button type="submit" class="btn btn-info logout" action="/">Log Out</button>
+        </form>     
       </div>    
     </div>    
   </div>
 
   <%= yield %>
+
 </body>
 </html>
