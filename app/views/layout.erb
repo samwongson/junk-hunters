@@ -42,20 +42,21 @@
         <ul class="nav navbar-nav">
           
           <li><a href="/"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create Sale</a></li>       
-            <li><a href="/">Register</a></li>
-            <li><a href="/">Login</a></li>        
+            <% if session[:user_id].nil? %>
+              <li><a href="/sign_up">Register</a></li>
+              <li><a href="/login">Login</a></li>        
+            <% end %>
         </ul>
         <form class="navbar-form navbar-right">      
-
-          <button type="submit" class="btn btn-info logout" action="/">Log Out</button>      
-
-        </form>
-        
-     
+          <% if session[:user_id] %>
+            <a class="btn btn-info logout" href="/logout" role="button">Logout</a>
+          <% end %>
+        </form>     
       </div>    
     </div>    
   </div>
 
   <%= yield %>
+  <% puts session.inspect %>
 </body>
 </html>
