@@ -5,7 +5,7 @@
   <% @sales.each do |sale| %>    
       <div class=" padding_bottom row">
         <div class="topbar col-md-10 col-md-offset-1">
-        <%= sale.address %> (<%= sale.start_time %>, <%= sale.start_time %>)
+        <%= sale.address %> (<%= sale.start_time %>, <%= sale.end_time %>)
         </div>
         <div class="post col-md-2 col-md-offset-1">Description
         <br>
