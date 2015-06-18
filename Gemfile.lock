@@ -24,6 +24,7 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
     coderay (1.1.0)
+    geocoder (1.2.9)
     i18n (0.7.0)
     json (1.8.3)
     method_source (0.8.2)
@@ -85,6 +86,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   carrierwave
+  geocoder
   pry
   puma
   rake
