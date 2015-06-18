@@ -2,6 +2,10 @@
 get '/' do
   @sales = Sale.all
   @items = Item.all
+  @sales.each do |sale|
+    @sale = sale
+  end
+  @items_per_sale = Item.where(sale_id: @sale.id)
   erb :index
 end
 

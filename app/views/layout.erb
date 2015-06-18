@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
   <link href="/stylesheets/stylesheet.css" rel="stylesheet">
@@ -32,20 +31,17 @@
         <ul class="nav navbar-nav">
           
           <li><a href="/"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create Sale</a></li>       
-            <% if session[:user_id].nil? %>
-              <li><a href="/sign_up">Register</a></li>
-              <li><a href="/login">Login</a></li>        
-            <% end %>
+            <li><a href="/">Register</a></li>
+            <li><a href="/">Login</a></li>        
         </ul>
-        <form class="navbar-form navbar-right">      
-          <% if session[:user_id] %>
-            <a class="btn btn-info logout" href="/logout" role="button">Logout</a>
-          <% end %>
+        <form class="navbar-form navbar-right">
+          <button type="submit" class="btn btn-info logout" action="/">Log Out</button>
         </form>     
       </div>    
     </div>    
   </div>
 
   <%= yield %>
+
 </body>
 </html>

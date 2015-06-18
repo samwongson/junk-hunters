@@ -4,15 +4,18 @@
 <div class="container">
   <% @sales.each do |sale| %>    
       <div class=" padding_bottom row">
-        <div class="topbar col-md-10 col-md-offset-1"><%= sale.address %> (<%= sale.start_time %>, <%= sale.start_time %>)</div>
-        <div class="post col-md-2 col-md-offset-1">Description<br><%= sale.description %>
-        <% @items.each do |item| %>
-        <li><%= item.name %></li>
-        <% end %>
+        <div class="topbar col-md-10 col-md-offset-1">
+        <%= sale.address %> (<%= sale.start_time %>, <%= sale.start_time %>)
+        </div>
+        <div class="post col-md-2 col-md-offset-1">Description
+        <br>
+        <%= sale.description %>
+        <br>
+         <li><%= @items_per_sale.name %></li>
         </div>
         <div class="google col-md-3 col-md-offset-0">maps!!</div>
         <div class="post2 col-md-5">
-          <img style="width: 100%;" src="/images/garage.jpg"/>
+          <img style="width: 100%;" src=<%= sale.image_path %>/>
         </div>
       </div>   
   <% end %>
