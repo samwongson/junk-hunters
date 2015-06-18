@@ -1,0 +1,24 @@
+<h1><%= @sale.address (@sale.start_time to @sale.) %></h1>
+
+<p>
+  Author: <%= @message.author %>
+</p>
+
+<p>
+  <%= @message.content  %>
+</p>
+<p>
+  Created on: <%= @message.created_at %>
+
+</p>
+<p>
+  Other post content by this author:
+  <% a = Message.where("author = ?", @message.author) %>
+  <% a.each do |post| %>
+  "<%= post.content %>" 
+  <% end %>
+  
+
+</p>
+
+<a href="/messages">Back to All Messages</a>
