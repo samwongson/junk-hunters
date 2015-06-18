@@ -6,10 +6,37 @@
   <link href="/stylesheets/stylesheet.css" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/normalize.css">
 
+    <script src="https://maps.googleapis.com/maps/api/js">
 
- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </script>
+    <script>
 
-       <script src="/javascript/script.js"></script>
+
+
+      function initialize() {
+
+        $('.map-canvas').each(function () {
+          var mapCanvas = this;
+          var latitude = $(this).data('latitude');
+          var longitude = $(this).data('longitude');
+          var myLatlng = new google.maps.LatLng(latitude, longitude);
+          var mapOptions = {
+            center: new google.maps.LatLng(latitude, longitude),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+          var map = new google.maps.Map(mapCanvas, mapOptions)
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              title:"Hello World!"
+          });
+          marker.setMap(map);
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascript/script.js"></script>
     <script src="/javascript/bootstrap.min.js"></script>
 
   <title>Junk Hunter</title>

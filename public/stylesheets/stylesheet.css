@@ -6,16 +6,17 @@
   background-image: url("../images/garage.jpg");
 }
 
+.map-canvas {
+        height: 350px;
+        background-color: #CCC;
+      }
+
 
 .post {
   background-color:white;
   height:350px;
 }
 
-.map {
-  background-color:#9bcae8;
-  height:350px;
-}
 
 .photo {
   background-color:gray;
