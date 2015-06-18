@@ -42,11 +42,11 @@ post '/sales' do
   end
 end
 
-get '/sign_up' do
-  erb :'/sign_up'
+get '/users/new' do
+  erb :'/users/new'
 end
 
-post '/sign_up' do
+post '/users' do
   user = User.find_by(username: params[:username])
   # Check that the password entered in the form matches what we have in the database
   if !user.nil?
@@ -61,10 +61,14 @@ post '/sign_up' do
 end
 
 get '/login' do
-  erb :login
+  redirect '/'
 end
 
-post '/login' do
+get '/session/new' do
+  session
+end
+
+post '/session' do
   user = User.find_by(username: params[:username])
   # Check that the password entered in the form matches what we have in the database
   if !user.nil?
