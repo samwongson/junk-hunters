@@ -33,8 +33,8 @@
           
           <li><a href="/"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create Sale</a></li>       
             <% if session[:user_id].nil? %>
-              <li><a href="/sign_up">Register</a></li>
-              <li><a href="/login">Login</a></li>        
+              <li><a href="/users/new">Register</a></li>
+              <li><a href="/session/new">Login</a></li>        
             <% end %>
         </ul>
         <form class="navbar-form navbar-right">      
