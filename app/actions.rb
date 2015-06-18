@@ -47,10 +47,6 @@ get '/users/new' do
 end
 
 post '/users' do
-
-  password_salt = BCrypt::Engine.generate_salt
-  password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
-
   user = User.find_by(username: params[:username])
   # Check that the password entered in the form matches what we have in the database
   if !user.nil?
