@@ -2,18 +2,22 @@
   padding-bottom: 100px;
 }
 
+.default_image_div {
+  background-image: url("../images/garage.jpg");
+}
+
 
 .post {
   background-color:white;
   height:350px;
 }
 
-.google {
+.map {
   background-color:#9bcae8;
   height:350px;
 }
 
-.post2 {
+.photo {
   background-color:gray;
   height:350px;
 }
