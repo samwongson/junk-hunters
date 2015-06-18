@@ -9,6 +9,43 @@ get '/' do
   erb :index
 end
 
+
+get '/sales/new' do
+  erb :'/sales/new'
+end
+
+post '/sales' do
+  # binding.pry
+  @sale = Sale.new(
+
+    address: params[:address],
+    start_time: params[:start_time],
+    end_time: params[:end_time],
+    description: params[:description],
+    # user_id: @current_user.id
+    
+    image_path: params[:image_path]
+    )
+
+
+  if @sale.save
+    # binding.pry
+    item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
+    item_list.each do |itemname|
+      if itemname != ""
+        item = Item.new(
+          item_name: itemname,
+          sale_id: @sale.id
+          )
+        item.save
+      end
+    end
+    redirect '/'
+  else 
+    erb :'/new'
+  end
+end
+
 get '/sign_up' do
   erb :'/sign_up'
 end

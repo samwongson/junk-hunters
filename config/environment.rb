@@ -1,12 +1,17 @@
 require 'rubygems'
 require 'bundler/setup'
 
+
 require 'active_support/all'
 
 # Load Sinatra Framework (with AR)
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib/all' # Requires cookies, among other things
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require 'rmagick'
+require_relative '../app/uploaders/image_uploader'
 
 require 'pry'
 
@@ -24,8 +29,14 @@ configure do
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
+CarrierWave.configure do |config|
+   config.root = APP_ROOT + 'public/'
+end
+
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
 # Load the routes / actions
 require APP_ROOT.join('app', 'actions')
+
+ActiveRecord::Base.raise_in_transactional_callbacks = true
