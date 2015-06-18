@@ -4,11 +4,11 @@ get '/' do
 end
 
 
-get '/new' do
-  erb :new
+get '/sales/new' do
+  erb :'/sales/new'
 end
 
-post '/new' do
+post '/sales' do
   # binding.pry
   @sale = Sale.new(
 
@@ -19,11 +19,21 @@ post '/new' do
     # user_id: @current_user.id
     
     image_path: params[:image_path]
-
     )
 
 
   if @sale.save
+    # binding.pry
+    item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
+    item_list.each do |itemname|
+      if itemname != ""
+        item = Item.new(
+          item_name: itemname,
+          sale_id: @sale.id
+          )
+        item.save
+      end
+    end
     redirect '/'
   else 
     erb :'/new'

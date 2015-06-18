@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617233733) do
+ActiveRecord::Schema.define(version: 20150618180344) do
 
   create_table "items", force: :cascade do |t|
     t.integer "sale_id"
-    t.string  "name"
+    t.string  "item_name"
   end
 
   add_index "items", ["sale_id"], name: "index_items_on_sale_id"

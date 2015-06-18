@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :sale
-  validates :name, presence: true
+  validates :item_name, presence: true
 
 
 end
