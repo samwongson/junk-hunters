@@ -36,8 +36,11 @@
               <li><a href="/session/new">Login</a></li>        
             <% end %>
         </ul>
-        <form class="navbar-form navbar-right">
-          <button type="submit" class="btn btn-info logout" action="/">Log Out</button>
+        <form class="navbar-form navbar-right" method="POST" action="/session">  
+          <% if session[:user_id] %>
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Logout">
+          <% end %>
         </form>     
       </div>    
     </div>    

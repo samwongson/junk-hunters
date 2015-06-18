@@ -65,7 +65,7 @@ get '/login' do
 end
 
 get '/session/new' do
-  session
+  erb :'/session/new'
 end
 
 post '/session' do
@@ -88,7 +88,7 @@ post '/session' do
   end
 end
 
-get '/logout' do
+delete '/session' do
   session[:user_id] = nil
   redirect "/"
 end
