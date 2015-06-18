@@ -11,7 +11,11 @@
         <br>
         <%= sale.description %>
         <br>
-         <li><%= @items_per_sale.name %></li>
+         <% Item.where(sale_id: sale.id).each do |item| %>
+          <li><%= item.item_name %></li>
+          <% end %>
+
+               
         </div>
         <div class="map col-md-3 col-md-offset-0">maps!!</div>
         <div class="photo col-md-5" style="background-image:url(<%= sale.image_path %>)">
