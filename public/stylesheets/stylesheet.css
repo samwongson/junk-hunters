@@ -1,0 +1,59 @@
+h1 {
+  padding-top:100px;
+  text-align:center;
+  padding-bottom: 20px;
+}
+
+.button {
+  margin-top: 10px;
+}
+.logout {
+  background: #54eaac;
+  border-color:white;
+}
+.logout:hover {
+  background: #6eeacb;
+  border-color:white;
+}
+
+body {
+  background-image: url("../images/knit2.png");
+  font-family: 'Merriweather Sans', sans-serif; 
+}
+
+.navbar-toggle {
+  background-color:#9de0de;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #000; 
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: white; 
+background-color: #030033;
+}
+
+  .navbar-default {
+    background-color: #9ce2a5;
+}
+
+  .dropdown-menu > li > a:hover,
+   .dropdown-menu > li > a:focus {
+    color: #262626;
+   text-decoration: none;
+  background-color: #66CCFF; 
+   }
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; 
+  }
+
+
+  .navbar-default .navbar-nav > li > a {
+   color: white; 
+    }
