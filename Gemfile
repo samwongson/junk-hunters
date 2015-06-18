@@ -4,10 +4,12 @@ source "https://rubygems.org"
 gem 'rake'
 gem 'activesupport'
 gem 'rmagick'
+gem 'bcrypt'
 gem 'carrierwave'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-activerecord'
+
 
 gem 'puma'
 gem 'tux'
