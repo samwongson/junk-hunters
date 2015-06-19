@@ -4,6 +4,7 @@ helpers do
 
   def to_12_hour_time(date_time)
     date_time.strftime("%l:%M").strip
+  end
 
   def current_user
     if session[:user_id]
@@ -41,7 +42,7 @@ post '/sales' do
     image_path: params[:image_path]
     )
 
-  binding.pry
+  # binding.pry
 
   if @sale.save!
 
@@ -154,7 +155,7 @@ delete '/session' do
 end
 
 get '/sales/:id' do
-  @sale = Sale.find params[:id]
+  @sale = Sale.find(params[:id])
   erb :'sales/show'
 end
 
