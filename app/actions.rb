@@ -3,7 +3,19 @@
 helpers do
 
   def to_12_hour_time(date_time)
-    date_time.strftime("%l:%M %P").strip
+    date_time.in_time_zone('US/Pacific').strftime("%l:%M %P").strip
+  end
+
+  def get_current_sales
+    @sales = Sale.where("start_time < ?", Time.now).where("end_time > ?", Time.now)
+  end
+
+  def order_by_urgency
+
+  end
+
+  def order_by_distance
+
   end
 
   def current_user
@@ -18,7 +30,7 @@ helpers do
 end
 
 get '/' do
-  @sales = Sale.all
+  @sales = get_current_sales
   @items = Item.all 
   erb :index
 end
@@ -41,9 +53,7 @@ post '/sales' do
     user_id: current_user.id,
     image_path: params[:image_path]
     )
-
-  # binding.pry
-
+  
   if @sale.save!
 
     item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
