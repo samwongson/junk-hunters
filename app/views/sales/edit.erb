@@ -1,0 +1,22 @@
+<h1>Edit Page</h1>  
+ 
+<form method="post" enctype="multipart/form-data" action="/sales/edit">    
+
+
+  <% @sale.items.each_with_index do |item, index| %>
+
+    <div>
+      <label>Item <%= index + 1 %>:</label> 
+      <input type="hidden" name="items[][id]" value="<%=item.id %>" />
+      <input type ="text" name="items[][item_name]" placeholder=<%= item.item_name %>>
+    </div>
+
+  <% end %>
+
+  <input name="salesubmit" type="submit" value="Submit" >
+
+</form>
+
+<form action="/sales/<%=@sale.id %>/items" method="post" >
+  <button class="button">Add new Item</button>
+</form>
