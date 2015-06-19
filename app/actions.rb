@@ -42,7 +42,7 @@ post '/sales' do
     image_path: params[:image_path]
     )
 
-  binding.pry
+  # binding.pry
 
   if @sale.save!
 
@@ -74,7 +74,9 @@ get '/sales/edit' do
 end
 
 post '/sales/:id/items' do
-  Item.create(item_name: 'item name here', sale_id: params[:id])
+  binding.pry
+  Item.create(item_name: 'Your item', sale_id: params[:id])
+
   redirect "/sales/edit"
 end
 
@@ -108,7 +110,7 @@ post '/users' do
   # Check that the password entered in the form matches what we have in the database
   if !user.nil?
     @message = "That user already exists. Try a different name."
-    erb :'/sign_up'
+    erb :'/session/new'
   else
     password_salt = BCrypt::Engine.generate_salt
     password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
@@ -120,6 +122,8 @@ post '/users' do
     redirect "/"
   end
 end
+
+
 
 get '/login' do
   redirect '/session/new'
