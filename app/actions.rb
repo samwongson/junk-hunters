@@ -14,13 +14,15 @@ post '/sales' do
   @sale = Sale.new(
 
     address: params[:address],
-    start_time: params[:start_time],
-    end_time: params[:end_time],
+    start_time: params[:start_time].to_time,
+    end_time: params[:end_time].to_time,
     description: params[:description],
     # user_id: @current_user.id
     
     image_path: params[:image_path]
     )
+
+  binding.pry
 
 
   if @sale.save!
