@@ -1,4 +1,11 @@
 # Homepage (Root path)
+
+helpers do
+  def to_12_hour_time(date_time)
+    date_time.strftime("%l:%M").strip
+  end
+end
+
 get '/' do
   @sales = Sale.all
   @items = Item.all 
@@ -23,7 +30,6 @@ post '/sales' do
     )
 
   binding.pry
-
 
   if @sale.save!
     item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
