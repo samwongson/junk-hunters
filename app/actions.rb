@@ -1,4 +1,16 @@
 # Homepage (Root path)
+
+helpers do
+  def current_user
+    if session[:user_id]
+      if @current_user.nil?
+        @current_user = User.find(session[:user_id])
+      end
+    end
+    @current_user
+  end
+end
+
 get '/' do
   @sales = Sale.all
   @items = Item.all 
@@ -7,18 +19,20 @@ end
 
 
 get '/sales/new' do
+
   erb :'/sales/new'
 end
 
 post '/sales' do
   # binding.pry
+
   @sale = Sale.new(
 
     address: params[:address],
     start_time: params[:start_time],
     end_time: params[:end_time],
     description: params[:description],
-    # user_id: @current_user.id
+    user_id: current_user.id,
     
     image_path: params[:image_path]
     )
@@ -95,5 +109,10 @@ end
 delete '/session' do
   session[:user_id] = nil
   redirect "/"
+end
+
+get '/sales/:id' do
+  @sale = Sale.find params[:id]
+  erb :'sales/show'
 end
 

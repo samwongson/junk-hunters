@@ -38,6 +38,44 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/javascript/script.js"></script>
     <script src="/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+    var interval;
+        var minutes = 1;
+        var seconds = 10;
+        
+        // window.onload = function() {
+        //     countdown('countdown');
+        // }
+
+        $(document).on('click', '.btn', function countdown() {
+            var element = 'countdown' + $(this).data('number').toString();
+            interval = setInterval(function() {
+                var el = document.getElementById(element);
+                if(seconds == 0) {
+                    if(minutes == 0) {
+                        alert(el.innerHTML = "countdown's over!");                    
+                        clearInterval(interval);
+                        return;
+                    } else {
+                        minutes--;
+                        seconds = 60;
+                    }
+                }
+                if(minutes > 0) {
+                    var minute_text = minutes + (minutes > 1 ? ' minutes' : ' minute');
+                } else {
+                    var minute_text = '';
+                }
+                var second_text = seconds > 1 ? 'seconds' : 'second';
+                el.innerHTML = minute_text + ' ' + seconds + ' ' + second_text + ' remaining';
+                seconds--;
+            }, 1000);
+        });
+    </script> 
 
   <title>Junk Hunter</title>
 </head> 

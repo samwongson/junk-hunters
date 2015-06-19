@@ -1,24 +1,28 @@
-<h1><%= @sale.address (@sale.start_time to @sale.) %></h1>
+<h1><%= @sale.address %> from <%= @sale.start_time %> to <%= @sale.end_time %></h1>
+<div data-latitude='<%= @sale.latitude%>' data-longitude='<%= @sale.longitude%>' class="map-canvas col-md-3 col-md-offset-0">maps!!</div>
+<div class="photo col-md-5" style="background-image:url(<%= @sale.image_path %>)">
+          <!-- <img  src=<%= @sale.image_path %>/> -->
+</div>
 
 <p>
-  Author: <%= @message.author %>
+  Hosted by: <%= @sale.user.username %> 
 </p>
 
 <p>
-  <%= @message.content  %>
+  Description: <%= @sale.description  %>
 </p>
 <p>
-  Created on: <%= @message.created_at %>
-
-</p>
-<p>
-  Other post content by this author:
-  <% a = Message.where("author = ?", @message.author) %>
-  <% a.each do |post| %>
-  "<%= post.content %>" 
-  <% end %>
   
 
 </p>
+<p>
+  <% counter = 0 %>
+  <% @sale.items.each do |item| %>
+    
+    <li><%= item.item_name %> <a data-number='<%= counter %>' href='#' class="btn btn-danger">Reserve</a><span id='countdown<%= counter %>'></span></li>
+  <% counter += 1 %>
+  <% end %>
 
-<a href="/messages">Back to All Messages</a>
+</p>
+
+<a href="/">Back to All sales</a>

@@ -4,9 +4,9 @@
 <div class="container">
   <% @sales.each do |sale| %>    
       <div class=" padding_bottom row">
-        <div class="topbar col-md-10 col-md-offset-1">
+        <div class="topbar col-md-10 col-md-offset-1"><a href="/sales/<%= sale.id %>">
         <%= sale.address %> (<%= sale.start_time %>, <%= sale.end_time %>)
-        </div>
+        </a></div>
         <div class="post col-md-2 col-md-offset-1">Description
         <br>
         <%= sale.description %>
