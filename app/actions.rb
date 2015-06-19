@@ -11,7 +11,6 @@ get '/sales/new' do
 end
 
 post '/sales' do
-  # binding.pry
   @sale = Sale.new(
 
     address: params[:address],
@@ -24,8 +23,7 @@ post '/sales' do
     )
 
 
-  if @sale.save
-    # binding.pry
+  if @sale.save!
     item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
     item_list.each do |itemname|
       if itemname != ""
@@ -38,7 +36,7 @@ post '/sales' do
     end
     redirect '/'
   else 
-    erb :'/new'
+    erb :'/sales/new'
   end
 end
 
