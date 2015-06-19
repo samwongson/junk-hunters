@@ -4,6 +4,7 @@ helpers do
 
   def to_12_hour_time(date_time)
     date_time.strftime("%l:%M").strip
+  end
 
   def current_user
     if session[:user_id]
@@ -139,12 +140,12 @@ post '/session' do
     else
       # login failed.
       @message = "Username or PASSWORD is incorrect."
-      erb :login # returns a giant HTML string
+      erb :'/session/new' # returns a giant HTML string
     end
   else
     # User not found in the database
     @message = "USERNAME or password is incorrect."
-    erb :login
+    erb :'/session/new'
   end
 end
 
