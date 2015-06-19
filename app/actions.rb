@@ -4,6 +4,7 @@ helpers do
 
   def to_12_hour_time(date_time)
     date_time.strftime("%l:%M").strip
+  end
 
   def current_user
     if session[:user_id]
@@ -41,7 +42,7 @@ post '/sales' do
     image_path: params[:image_path]
     )
 
-  binding.pry
+  # binding.pry
 
   if @sale.save!
 
@@ -73,7 +74,9 @@ get '/sales/edit' do
 end
 
 post '/sales/:id/items' do
-  Item.create(item_name: 'item name here', sale_id: params[:id])
+  binding.pry
+  Item.create(item_name: 'Your item', sale_id: params[:id])
+
   redirect "/sales/edit"
 end
 
@@ -107,7 +110,7 @@ post '/users' do
   # Check that the password entered in the form matches what we have in the database
   if !user.nil?
     @message = "That user already exists. Try a different name."
-    erb :'/sign_up'
+    erb :'/session/new'
   else
     password_salt = BCrypt::Engine.generate_salt
     password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
@@ -119,6 +122,8 @@ post '/users' do
     redirect "/"
   end
 end
+
+
 
 get '/login' do
   redirect '/session/new'
@@ -139,12 +144,12 @@ post '/session' do
     else
       # login failed.
       @message = "Username or PASSWORD is incorrect."
-      erb :login # returns a giant HTML string
+      erb :'/session/new' # returns a giant HTML string
     end
   else
     # User not found in the database
     @message = "USERNAME or password is incorrect."
-    erb :login
+    erb :'/session/new'
   end
 end
 

@@ -11,6 +11,26 @@ task "db:create" do
   touch 'db/db.sqlite3'
 end
 
+desc "reset database"
+task "db:rebirth" do
+  exec("rake db:drop; rake db:create; rake db:migrate; rake db:populate")
+end
+
+desc "Populate"
+task "db:populate" do
+  @user = User.create!(username: "john", password: "john")
+  @sale = Sale.create!(address: "610 Gore Ave, Vancouver", start_time: "2015-04-20", end_time: "2015-04-20", description: "Yard Sale", image_path: open('garage.jpg'), user_id: @user.id)
+  @item1 = Item.create!(sale_id: @sale.id, item_name: "carrots")
+  @item2 = Item.create!(sale_id: @sale.id, item_name: "pigs")
+  @item3 = Item.create!(sale_id: @sale.id, item_name: "tools")
+
+  @user2 = User.create!(username: "pepe", password: "pepe")
+  @sale2 = Sale.create(address: "978 w 18th Vancouver", start_time: Time.now, end_time: Time.now + (60*60), description: "asdffds", image_path: open('brickwall.png'), user_id: @user2.id)
+  @item4 = Item.create!(sale_id: @sale2.id, item_name: "more carrots")
+  @item5 = Item.create!(sale_id: @sale2.id, item_name: "lots of pigs")
+  @item6 = Item.create!(sale_id: @sale2.id, item_name: "tools")
+end
+
 desc "drop the database"
 task "db:drop" do
   rm_f 'db/db.sqlite3'
