@@ -6,6 +6,7 @@ get '/' do
 end
 
 
+
 get '/sales/new' do
   erb :'/sales/new'
 end
@@ -17,15 +18,12 @@ post '/sales' do
     address: params[:address],
     start_time: params[:start_time],
     end_time: params[:end_time],
-    description: params[:description],
-    # user_id: @current_user.id
-    
+    description: params[:description],    
     image_path: params[:image_path]
     )
 
 
   if @sale.save
-    # binding.pry
     item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
     item_list.each do |itemname|
       if itemname != ""
@@ -41,6 +39,43 @@ post '/sales' do
     erb :'/new'
   end
 end
+
+
+
+get '/sales/edit' do
+
+  @logged_in = session[:user_id]
+  if @logged_in
+    @sale = Sale.where(user_id: @logged_in).first
+  end
+  erb :'/sales/edit'
+end
+
+post '/sales/:id/items' do
+  Item.create(item_name: 'item name here', sale_id: params[:id])
+  redirect "/sales/edit"
+end
+
+
+post '/sales/edit' do
+  @logged_in = session[:user_id]
+  @sale = Sale.where(user_id: @logged_in).first
+
+
+  if @logged_in
+    params[:items].each do |params_item|
+      item = Item.find(params_item[:id])
+      item.item_name = params_item[:item_name]
+      item.save
+    end         
+    redirect '/'
+  else 
+    erb :'/sales/edit'  
+  end
+end
+
+
+
 
 get '/users/new' do
   erb :'/users/new'
