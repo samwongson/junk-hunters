@@ -6,12 +6,8 @@ helpers do
     date_time.in_time_zone('US/Pacific').strftime("%l:%M %P").strip
   end
 
-  def get_current_sales
-    @sales = Sale.where("start_time < ?", Time.now).where("end_time > ?", Time.now)
-  end
-
-  def order_by_urgency
-
+  def get_sales_by_time
+    @sales = Sale.where("start_time < ?", Time.now).where("end_time > ?", Time.now).order(:end_time)
   end
 
   def order_by_distance
@@ -30,7 +26,7 @@ helpers do
 end
 
 get '/' do
-  @sales = get_current_sales
+  @sales = get_sales_by_time
   @items = Item.all 
   erb :index
 end
@@ -53,7 +49,7 @@ post '/sales' do
     user_id: current_user.id,
     image_path: params[:image_path]
     )
-  
+
   if @sale.save!
 
     item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]

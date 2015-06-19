@@ -5,4 +5,5 @@
 /db/*.sqlite
 /db/*.sqlite3-journal
 .DS_Store
-public/assets
+/public/uploads/tmp/*
+/public/images/*
