@@ -2,7 +2,7 @@
 
 helpers do
   def to_12_hour_time(date_time)
-    date_time.strftime("%l:%M").strip
+    date_time.strftime("%l:%M %P").strip
   end
 end
 
