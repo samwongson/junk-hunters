@@ -1,8 +1,18 @@
 # Homepage (Root path)
 
 helpers do
+
   def to_12_hour_time(date_time)
     date_time.strftime("%l:%M").strip
+
+  def current_user
+    if session[:user_id]
+      if @current_user.nil?
+        @current_user = User.find(session[:user_id])
+      end
+    end
+    @current_user
+
   end
 end
 
@@ -14,17 +24,19 @@ end
 
 
 get '/sales/new' do
+
   erb :'/sales/new'
 end
 
 post '/sales' do
+
   @sale = Sale.new(
 
     address: params[:address],
     start_time: params[:start_time].to_time,
     end_time: params[:end_time].to_time,
     description: params[:description],
-    # user_id: @current_user.id
+    user_id: current_user.id,
     
     image_path: params[:image_path]
     )
@@ -101,5 +113,10 @@ end
 delete '/session' do
   session[:user_id] = nil
   redirect "/"
+end
+
+get '/sales/:id' do
+  @sale = Sale.find params[:id]
+  erb :'sales/show'
 end
 
