@@ -74,7 +74,7 @@ get '/sales/edit' do
 end
 
 post '/sales/:id/items' do
-  binding.pry
+  # binding.pry
   Item.create(item_name: 'Your item', sale_id: params[:id])
 
   redirect "/sales/edit"
