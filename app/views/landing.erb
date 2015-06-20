@@ -1,0 +1,40 @@
+<!-- Users only see this page if they don't have location saved in their session -->
+
+<!--
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;  
+}
+</script>
+-->
+
+
+
+<h1>Find pop-up sales happening now.</h1>
+
+<form class="form-group" method="post" action="/session_location">
+  <div>
+    <label>Where you at?</label>   
+    <input type="text" class="form-control" name="location" placeholder="Street address, city">
+  </div>
+  <div>
+    <input type="submit" class="btn btn-default" value="Submit">
+  </div>
+</form>

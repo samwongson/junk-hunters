@@ -6,12 +6,17 @@ helpers do
     date_time.in_time_zone('US/Pacific').strftime("%l:%M %P").strip
   end
 
-  def get_sales_by_time
-    @sales = Sale.where("start_time < ?", Time.now).where("end_time > ?", Time.now).order(:end_time)
+  def get_current_sales
+    Sale.where("start_time < ?", Time.now).where("end_time > ?", Time.now)
   end
 
-  def order_by_distance
+  def get_sales_by_time
+    @sales = get_current_sales.order(:end_time)
+  end
 
+  def get_sales_by_distance
+    # GET USER LOCATION.
+    @sales = get_current_sales.near(session[:location], 10)
   end
 
   def current_user
@@ -26,11 +31,24 @@ helpers do
 end
 
 get '/' do
-  @sales = get_sales_by_time
-  @items = Item.all 
-  erb :index
+  if session[:location] 
+    # @sales = get_sales_by_time
+    # show all sales.
+    @sales = get_sales_by_distance 
+    @items = Item.all 
+    erb :index
+  else
+    # request location
+    erb :'/landing'
+  end
 end
 
+post '/session_location' do
+  session[:location] = params[:location]
+  puts session[:location]
+
+  redirect '/'
+end
 
 
 get '/sales/new' do
@@ -105,8 +123,6 @@ post '/sales/edit' do
 end
 
 
-
-
 get '/users/new' do
   erb :'/users/new'
 end
@@ -128,8 +144,6 @@ post '/users' do
     redirect "/"
   end
 end
-
-
 
 get '/login' do
   redirect '/session/new'
@@ -160,6 +174,7 @@ post '/session' do
 end
 
 delete '/session' do
+  session[:location] = nil
   session[:user_id] = nil
   redirect "/"
 end
@@ -168,4 +183,3 @@ get '/sales/:id' do
   @sale = Sale.find(params[:id])
   erb :'sales/show'
 end
-
