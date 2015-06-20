@@ -32,6 +32,12 @@ configure do
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
+# Geocoder configuration
+Geocoder.configure(
+  # set default units to kilometers:
+  :units => :km,
+)
+
 CarrierWave.configure do |config|
    config.root = APP_ROOT + 'public/'
 end

@@ -16,12 +16,12 @@ helpers do
     Sale.where("start_time < ?", DateTime.now).where("end_time > ?", DateTime.now)
   end
 
-  def get_sales_by_time
-    @sales = get_current_sales.order(:end_time)
+  def order_sales_by_time(sales)
+    @sales = sales.order(:end_time)
   end
 
-  def get_sales_by_distance
-    @sales = get_current_sales.near(session[:location], session[:search_radius])
+  def order_sales_by_distance(sales)
+    @sales = sales.near(session[:location], session[:search_radius])
   end
 
   def current_user
@@ -39,7 +39,7 @@ get '/' do
   if session[:location] 
     # @sales = get_sales_by_time
     # show all sales.
-    @sales = get_sales_by_distance 
+    @sales = order_sales_by_distance(get_current_sales)
     @items = Item.all 
     erb :index
   else
@@ -74,7 +74,7 @@ post '/session_location' do
     session[:search_radius] = params[:search_radius].to_i
   end
 
-  if !get_sales_by_distance.empty?
+  if !order_sales_by_distance(get_current_sales).empty?
     puts session[:location]
     redirect '/'
   else
