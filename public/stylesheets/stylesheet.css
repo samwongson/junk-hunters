@@ -79,7 +79,9 @@ h1 {
 }
 
 .title {
-  font-size: 3em;
+  font-size: 3.5em;
+  text-shadow: 2px 2px #7c7c7c;
+
 }
 
 
