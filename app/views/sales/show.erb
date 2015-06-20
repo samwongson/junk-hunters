@@ -16,7 +16,8 @@
 
       </div>
       <div data-latitude='<%= @sale.latitude%>' data-longitude='<%= @sale.longitude%>' class="map-canvas col-md-3 col-md-offset-0">maps!!</div>
-      <div class="photo col-md-5" style="background-image:url(<%= @sale.image_path %>)">
+      <div class="photo col-md-5" >
+          <img class="picture" src="<%= @sale.image_path %>">
       </div>
   </div>
 </div>
