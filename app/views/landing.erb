@@ -27,18 +27,23 @@ function showPosition(position) {
 
 
 
-<h1>Find pop-up sales happening now.</h1>
-
-<% if @message %>
-  <%= @message %>
-<% end %>
-
-<form class="form-group" method="post" action="/session_location">
-  <div>
-    <label>Where you at?</label>   
-    <input type="text" class="form-control" name="location" placeholder="Street address, city">
+<h1 class="title">Junkr</h1>
+<h3 class="explain">Find Pop-up shops happening now</h3>
+<div class="container">
+  <div class="row ">
+    <div class="new_form col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3">
+        <% if @message %>
+          <%= @message %>
+        <% end %>
+      <form class=" form-group" method="post" action="/session_location">
+        <div>
+          <label>Where you at?</label>
+          <input type="text" class="form-control" name="location" placeholder="Street address, city">
+        </div>
+        <div>
+          <input type="submit" class="salesubmit btn btn-primary" value="Submit">
+        </div>
+      </form>
+    </div>
   </div>
-  <div>
-    <input type="submit" class="btn btn-default" value="Submit">
-  </div>
-</form>
+</div>

@@ -29,11 +29,8 @@
 }
 
 .salesubmit {
-
   margin-top: 7px;
-
 }
-
 
 
 .post {
@@ -42,6 +39,7 @@
   box-shadow: 10px 10px 5px #545454;
   border-bottom-left-radius: 8px;
   opacity: 0.9;
+  color:black;
 }
 
 
@@ -80,13 +78,18 @@ h1 {
 
 .title {
   font-size: 3em;
+  text-shadow: 1.5px 1.5px #848484;
 }
 
-
-
-.button {
-  
+.explain {
+  text-align: center;
+  padding-bottom: 20px;
 }
+
+.address {
+  color:black;
+}
+
 
 .logout {
   background: #54eaac;
