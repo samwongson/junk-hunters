@@ -1,14 +1,15 @@
 <h1>Edit Page</h1>  
  
-<form method="post" enctype="multipart/form-data" action="/sales/edit">    
+<form method="post" enctype="multipart/form-data" action="/sales/edit">
 
 
-  <% @sale.items.each_with_index do |item, index| %>
+
+  <% @sale[0].items.each_with_index do |item, index| %>
 
     <div>
       <label>Item <%= index + 1 %>:</label> 
       <input type="hidden" name="items[][id]" value="<%=item.id %>" />
-      <input type ="text" name="items[][item_name]" placeholder=<%= item.item_name %>>
+      <input type ="text" name="items[][item_name]" placeholder="<%= item.item_name %>">
     </div>
 
   <% end %>
@@ -17,6 +18,6 @@
 
 </form>
 
-<form action="/sales/<%=@sale.id %>/items" method="post" >
+<form action="/sales/<%=@sale[0].id %>/items" method="post" >
   <button class="button">Add new Item</button>
 </form>

@@ -6,12 +6,21 @@ helpers do
     date_time.in_time_zone('US/Pacific').strftime("%l:%M %P").strip
   end
 
-  def get_sales_by_time
-    @sales = Sale.where("start_time < ?", Time.now).where("end_time > ?", Time.now).order(:end_time)
+  def to_time_zone_date(date)
+    date.in_time_zone('US/Pacific').to_date
   end
 
-  def order_by_distance
+  def get_current_sales
+    Sale.where("start_time < ?", DateTime.now).where("end_time > ?", DateTime.now)
+  end
 
+  def get_sales_by_time
+    @sales = get_current_sales.order(:end_time)
+  end
+
+  def get_sales_by_distance
+    # GET USER LOCATION.
+    @sales = get_current_sales.near(session[:location], 10)
   end
 
   def current_user
@@ -25,16 +34,36 @@ helpers do
   end
 end
 
+
 get '/' do
-  @sales = get_sales_by_time
-  @items = Item.all 
-  erb :index
+  if session[:location] 
+    # @sales = get_sales_by_time
+    # show all sales.
+    @sales = get_sales_by_distance 
+    @items = Item.all 
+    erb :index
+  else
+    # request location
+    erb :'/landing'
+  end
 end
 
 
+post '/session_location' do
+  session[:location] = params[:location]
+  if !get_sales_by_distance.empty?
+    puts session[:location]
+    redirect '/'
+  else
+    session[:location] = nil
+    @message = "We can't find any sales near #{params[:location]}. Try somewhere else?"
+    erb :'/landing'
+  end
+end
+
 
 get '/sales/new' do
-
+  @sale = Sale.new()
   erb :'/sales/new'
 end
 
@@ -50,7 +79,7 @@ post '/sales' do
     image_path: params[:image_path]
     )
 
-  if @sale.save!
+  if @sale.save
 
     item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
     item_list.each do |itemname|
@@ -73,16 +102,19 @@ end
 get '/sales/edit' do
 
   @logged_in = session[:user_id]
-  if @logged_in
-    @sale = Sale.where(user_id: @logged_in).first
+  @sale = Sale.where("user_id = ?", @logged_in)
+  # binding.pry
+   
+  if @sale
+    erb :'sales/edit'
+  else 
+    redirect '/'
   end
-  erb :'/sales/edit'
+  
 end
 
 post '/sales/:id/items' do
-  binding.pry
-  Item.create(item_name: 'Your item', sale_id: params[:id])
-
+  Item.create(item_name: "Your item", sale_id: params[:id])
   redirect "/sales/edit"
 end
 
@@ -90,7 +122,6 @@ end
 post '/sales/edit' do
   @logged_in = session[:user_id]
   @sale = Sale.where(user_id: @logged_in).first
-
 
   if @logged_in
     params[:items].each do |params_item|
@@ -103,8 +134,6 @@ post '/sales/edit' do
     erb :'/sales/edit'  
   end
 end
-
-
 
 
 get '/users/new' do
@@ -130,14 +159,15 @@ post '/users' do
 end
 
 
-
 get '/login' do
   redirect '/session/new'
 end
 
+
 get '/session/new' do
   erb :'/session/new'
 end
+
 
 post '/session' do
   user = User.find_by(username: params[:username])
@@ -159,13 +189,15 @@ post '/session' do
   end
 end
 
+
 delete '/session' do
+  session[:location] = nil
   session[:user_id] = nil
   redirect "/"
 end
+
 
 get '/sales/:id' do
   @sale = Sale.find(params[:id])
   erb :'sales/show'
 end
-
