@@ -19,6 +19,7 @@
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 30px;
+  opacity:0.9;
 }
 
 .edit-submit {
@@ -128,7 +129,7 @@ body {
 }
 
 body { 
-  background: url("../images/city.jpg") no-repeat center center fixed; 
+  background: url("../images/cityblur10bw.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
