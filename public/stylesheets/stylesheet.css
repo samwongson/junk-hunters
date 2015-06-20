@@ -13,6 +13,23 @@
         opacity:0.95;
       }
 
+.edit-form {
+  background-color: #5cb5d6;
+  box-shadow: 7px 7px 5px #545454;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.edit-submit {
+  width: 100%;
+}
+
+.add-new {
+  width: 100%;
+  
+}
+
 .new_form {
   padding-bottom: 15px;
   padding-top: 15px;
