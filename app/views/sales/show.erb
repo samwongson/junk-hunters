@@ -10,7 +10,7 @@
       <% counter = 0 %>
       <% @sale.items.each do |item| %>
         
-        <li><%= item.item_name %></li><a data-number='<%= counter %>' href='#' class="btn btn-success">Reserve</a><span id='countdown<%= counter %>'></span>
+        <li><%= item.item_name %></li><a data-number='<%= counter %>' href='#' class="btn btn-success reserve-button">Reserve</a><span id='countdown<%= counter %>'></span>
         <% counter += 1 %>
       <% end %>
 
