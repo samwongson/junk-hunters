@@ -115,7 +115,7 @@ end
 
 post '/sales/:id/items' do
   Item.create(item_name: "Your item", sale_id: params[:id])
-  redirect "/sales/edit"
+  redirect '/sales/edit'
 end
 
 
