@@ -1,4 +1,6 @@
 # Homepage (Root path)
+# DEFAULT_LOCATION = "125 W Hastings, Vancouver"
+# DEFAULT_SEARCH_RADIUS = 10
 
 helpers do
 
@@ -14,13 +16,12 @@ helpers do
     Sale.where("start_time < ?", DateTime.now).where("end_time > ?", DateTime.now)
   end
 
-  def get_sales_by_time
-    @sales = get_current_sales.order(:end_time)
+  def order_sales_by_time(sales)
+    @sales = sales.order(:end_time)
   end
 
-  def get_sales_by_distance
-    # GET USER LOCATION.
-    @sales = get_current_sales.near(session[:location], 10)
+  def order_sales_by_distance(sales)
+    @sales = sales.near(session[:location], session[:search_radius])
   end
 
   def current_user
@@ -30,7 +31,6 @@ helpers do
       end
     end
     @current_user
-
   end
 end
 
@@ -39,7 +39,7 @@ get '/' do
   if session[:location] 
     # @sales = get_sales_by_time
     # show all sales.
-    @sales = get_sales_by_distance 
+    @sales = order_sales_by_distance(get_current_sales)
     @items = Item.all 
     erb :index
   else
@@ -50,12 +50,36 @@ end
 
 
 post '/session_location' do
-  session[:location] = params[:location]
-  if !get_sales_by_distance.empty?
+
+  # if user entered nothing
+  if params[:location].empty?
+    # and the session has never been set
+    if session[:location].nil?
+      # set the session to the default location
+      session[:location] = "125 W Hastings, Vancouver"
+    end
+    # and the session HAS been set, don't change it.
+  # if the user did enter something
+  else
+    # update the session to reflect that.
+    session[:location] = params[:location]
+  end
+
+
+  if params[:search_radius].empty?
+    if session[:search_radius].nil?
+      session[:search_radius] = 10
+    end
+  else
+    session[:search_radius] = params[:search_radius].to_i
+  end
+
+  if !order_sales_by_distance(get_current_sales).empty?
     puts session[:location]
     redirect '/'
   else
     session[:location] = nil
+    session[:search_radius] = nil
     @message = "We can't find any sales near #{params[:location]}. Try somewhere else?"
     erb :'/landing'
   end
@@ -96,7 +120,6 @@ post '/sales' do
     erb :'/sales/new'
   end
 end
-
 
 
 get '/sales/edit' do
@@ -191,7 +214,9 @@ end
 
 
 delete '/session' do
+  # TODO does it make sense to nil location and search_radius here?
   session[:location] = nil
+  session[:search_radius] = nil
   session[:user_id] = nil
   redirect "/"
 end
