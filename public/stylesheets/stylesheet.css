@@ -14,23 +14,25 @@
       }
 
 .new_form {
-  height: 350px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 30px;
   background-color: #5cb5d6;
   box-shadow: 10px 10px 5px #545454;
   opacity:0.95; 
+  border-radius: 8px;
 }
 
-/*.navbar-header {
-    float: left;
-    padding: 15px;
-    text-align: center;
-    width: 100%;
-}*/
 
 .navbar-default .navbar-brand {
     color: #232323;
 }
 
+.salesubmit {
+
+  margin-top: 7px;
+
+}
 
 
 
