@@ -26,12 +26,14 @@
     <h1> There are no sales in your area. </h1>
   <% else %> 
 
+    <h1> Here are all the sales within <%= session[:search_radius] %> km of <%=session[:location]%> </h1>
+
     <% @sales.each do |sale| %>    
       <div class=" padding_bottom row">
 
         <div class="topbar col-md-10 col-md-offset-1">
 
-        <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)</a>
+        <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>) about <%= '%.2f' % sale.distance %>km away.</a>
 
         </div>
 
