@@ -1,33 +1,25 @@
+<h1>Sale</h1>
+<div class="container">
+  <div class=" padding_bottom row">
+    <div class="topbar col-md-10 col-md-offset-1">
+      <p class="address"><%= @sale.address %> (<%= @sale.start_time.to_date %> || <%= to_12_hour_time(@sale.start_time) %>, <%= to_12_hour_time(@sale.end_time) %>)</p>
+      </div>
 
+      <div class="post col-xs-4 col-md-2 col-md-offset-1">
+      <h4><%= @sale.description %></h4>
+      <% counter = 0 %>
+      <% @sale.items.each do |item| %>
+        
+        <li><%= item.item_name %></li><a data-number='<%= counter %>' href='#' class="btn btn-success reserve-button">Reserve</a><span id='countdown<%= counter %>'></span>
+        <% counter += 1 %>
+      <% end %>
 
-<h1><%= @sale.address %> from <%= @sale.start_time %> to <%= @sale.end_time %></h1>
-
-
-<div data-latitude='<%= @sale.latitude%>' data-longitude='<%= @sale.longitude%>' class="map-canvas col-md-3 col-md-offset-0">maps!!</div>
-<div class="photo col-md-5" style="background-image:url(<%= @sale.image_path %>)">
-          <!-- <img  src=<%= @sale.image_path %>/> -->
+      </div>
+      <div data-latitude='<%= @sale.latitude%>' data-longitude='<%= @sale.longitude%>' class="map-canvas col-md-3 col-md-offset-0">maps!!</div>
+      <div class="photo col-md-5" >
+          <img class="picture" src="<%= @sale.image_path %>">
+      </div>
+  </div>
 </div>
 
-<p>
-  Hosted by: <%= @sale.user.username %> 
-</p>
-
-<p>
-  Description: <%= @sale.description  %>
-</p>
-<p>
-  
-
-</p>
-<p>
-  <% counter = 0 %>
-  <% @sale.items.each do |item| %>
-    
-    <li><%= item.item_name %> <a data-number='<%= counter %>' href='#' class="btn btn-danger">Reserve</a><span id='countdown<%= counter %>'></span></li>
-  <% counter += 1 %>
-  <% end %>
-
-</p>
-
-<a href="/">Back to All sales</a>
 

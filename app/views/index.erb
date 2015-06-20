@@ -2,7 +2,7 @@
 
 
 <div class="container">
-  <div class="new_form col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3">
+  <div class="new_form col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
       <% if @message %>
         <%= @message %>
       <% end %>
@@ -16,18 +16,20 @@
         <input type="number" class="form-control" name="search_radius" placeholder="10">
       </div>
       <div>
-        <input type="submit" class="salesubmit btn btn-primary" value="Submit">
+        <input type="submit" class="padding-top add-new salesubmit btn btn-primary" value="Submit">
       </div>
     </form>
   </div>
   
   <!-- TODO I don't remember why this is here but I'm scared we'll find out why later. -->
   <% if @sales.empty? %>
-    <h1> There are no sales in your area. </h1>
+    <div class="col-md-6 col-md-offset-3">
+      <h4 class="explain"> There are no sales in your area. </h4>
+    </div>
   <% else %> 
-
-    <h1> Here are all the sales within <%= session[:search_radius] %> km of <%=session[:location]%> </h1>
-
+    <div class="col-md-6 col-md-offset-3">
+      <h4 class="explain"> Here are all the sales within <%= session[:search_radius] %> km of <%=session[:location]%></h4>
+    </div>
     <% @sales.each do |sale| %>    
       <div class=" padding_bottom row">
 
