@@ -1,23 +1,43 @@
 <h1>Edit Page</h1>  
- 
-<form method="post" enctype="multipart/form-data" action="/sales/edit">
+ <div class="container">
+  
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 edit-form">
+  <form method="post" enctype="multipart/form-data" action="/sales/edit">
 
+    <% @sale[0].items.each_with_index do |item, index| %>
 
+      <div class="form-group">
+        <label for="inputItem" class="control-label">Item <%= index + 1 %>:</label> 
+        <div class="col-sm10">
+        <input class="form-control" type="hidden" name="items[][id]" value="<%=item.id %>" >
+        <input id="inputItem" class="form-control" type ="text" name="items[][item_name]" placeholder="<%= item.item_name %>">
+        </div>
+      </div>
 
-  <% @sale[0].items.each_with_index do |item, index| %>
+    <% end %>
 
-    <div>
-      <label>Item <%= index + 1 %>:</label> 
-      <input type="hidden" name="items[][id]" value="<%=item.id %>" />
-      <input type ="text" name="items[][item_name]" placeholder="<%= item.item_name %>">
+    <div class="row">
+      <div class="col-md-6">
+        
+    <input class="btn btn-primary edit-submit" name="editsubmit" type="submit" value="Submit" ></form>
+
+      </div>
+      <div class="col-md-6">
+
+        <form action="/sales/<%=@sale[0].id %>/items" method="post" >
+      <button name="newitemsubmit" type=
+    "submit" class="btn btn-success add-new">Add new Item</button>
+      </form>
+
+      </div>
+  
     </div>
 
-  <% end %>
-
-  <input name="editsubmit" type="submit" value="Submit" >
-
-</form>
-
-<form action="/sales/<%=@sale[0].id %>/items" method="post" >
-  <button class="button">Add new Item</button>
-</form>
+     
+  </div>
+  <div class="col-mid-3"> </div>
+  </div>
+  
+</div>
