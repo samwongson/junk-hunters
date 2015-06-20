@@ -1,4 +1,4 @@
-<h1 class="title">Junk Hunter</h1>
+<h1 class="title">Junkr</h1>
 
 
 <div class="container">
@@ -9,18 +9,17 @@
         <%= sale.address %> (<%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)
         </div>
 
-        <div class="post col-md-2 col-md-offset-1">Description
-        <br>
-        <%= sale.description %>
-        <br>
+        <div class="post col-xs-4 col-md-2 col-md-offset-1">
+        <h4><%= sale.description %></h4>
          <% Item.where(sale_id: sale.id).each do |item| %>
           <li><%= item.item_name %></li>
           <% end %>
-
-               
         </div>
+
         <div data-latitude='<%= sale.latitude%>' data-longitude='<%= sale.longitude%>' class="map-canvas col-md-3 col-md-offset-0">maps!!</div>
-        <div class="photo col-md-5" style="background-image:url(<%= sale.image_path %>)">
+
+        <div class="photo col-md-5" >
+          <img class="picture" src="<%= sale.image_path %>">
         </div>
       </div>   
   <% end %>
