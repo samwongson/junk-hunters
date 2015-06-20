@@ -165,7 +165,7 @@ delete '/session' do
 end
 
 get '/sales/:id' do
-  @sale = Sale.find params[:id]
+  @sale = Sale.find(params[:id])
   erb :'sales/show'
 end
 

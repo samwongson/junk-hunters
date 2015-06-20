@@ -12,60 +12,61 @@
     </ul>
   </div>
 <% end %>
+<div class="container">
+  <div class="row">
+    <div class="new_form col-md-6 col-md-offset-3">
+      <form method="post" enctype="multipart/form-data" action="/sales">
+        <div>
+          <label>Address:</label>
+          <input type="text" class="form-control" name="address" placeholder="123 street city">
+        </div>
 
-<form method="post" enctype="multipart/form-data" action="/sales">
-  <div>
-    <label>Address:</label>
-    <input type="text" name="address" >
+        <div>
+          <label>Start time:</label>
+          <input type="time" class="form-control" name="start_time" >
+        </div>
+
+        <div>
+          <label>End time:</label>
+          <input type="time" class="form-control" name="end_time" >
+        </div>
+
+        <div>
+          <label>Description:</label>
+          <input type="text" class="form-control" name="description" placeholder="Describe your junk!">
+        </div>
+
+        <div>
+          <label>Upload image:</label>
+          <input type="file" class="form-control" name="image_path" placeholder="show your junk!">
+        </div>
+
+        <div>
+          <label>Item 1:</label> 
+          <input type ="text" class="form-control" name="item_name1" placeholder="Big ticket item">
+        </div>
+
+        <div>
+          <label>Item 2:</label> 
+          <input type ="text" class="form-control" name="item_name2" placeholder="Big ticket item">
+        </div>
+
+        <div>
+          <label>Item 3:</label> 
+          <input type ="text" class="form-control" name="item_name3" placeholder="Big ticket item">
+        </div>
+
+        <div>
+          <label>Item 4:</label> 
+          <input type ="text" class="form-control" name="item_name4" placeholder="Big ticket item">
+        </div>
+
+        <div>
+          <label>Item 5:</label> 
+          <input type ="text" class="form-control" name="item_name5" placeholder="Big ticket item">
+        </div>  
+        <input class="btn btn-primary salesubmit" name="salesubmit" type="submit" value="Submit" >
+      </form>
+    </div>
   </div>
-
-  <div>
-    <label>Start time:</label>
-    <input type="time" name="start_time" >
-  </div>
-
-  <div>
-    <label>End time:</label>
-    <input type="time" name="end_time" >
-  </div>
-
-  <div>
-    <label>Description:</label>
-    <input type="text" name="description">
-  </div>
-
-  <div>
-    <label>Upload image:</label>
-    <input type="file" name="image_path" value="show your junk!">
-  </div>
-
-  <div>
-    <label>Item 1:</label> 
-    <input type ="text" name="item_name1">
-  </div>
-
-  <div>
-    <label>Item 2:</label> 
-    <input type ="text" name="item_name2">
-  </div>
-
-  <div>
-    <label>Item 3:</label> 
-    <input type ="text" name="item_name3">
-  </div>
-
-  <div>
-    <label>Item 4:</label> 
-    <input type ="text" name="item_name4">
-  </div>
-
-  <div>
-    <label>Item 5:</label> 
-    <input type ="text" name="item_name5">
-  </div>
-
-
-
-  
-  <input name="salesubmit" type="submit" value="Submit" >
-</form>
+</div>

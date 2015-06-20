@@ -9,34 +9,80 @@
 .map-canvas {
         height: 350px;
         background-color: #CCC;
+        box-shadow: 10px 10px 5px #545454;
+        opacity:0.95;
       }
+
+.new_form {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 30px;
+  background-color: #5cb5d6;
+  box-shadow: 10px 10px 5px #545454;
+  opacity:0.95; 
+  border-radius: 8px;
+}
+
+
+.navbar-default .navbar-brand {
+    color: #232323;
+}
+
+.salesubmit {
+
+  margin-top: 7px;
+
+}
+
 
 
 .post {
-  background-color:white;
+  background-color:#5cb5d6;
   height:350px;
+  box-shadow: 10px 10px 5px #545454;
+  border-bottom-left-radius: 8px;
+  opacity: 0.9;
 }
 
 
 .photo {
-  background-color:gray;
+  background-color:#5cb5d6;
   height:350px;
+  box-shadow: 10px 10px 5px #545454;
+  border-bottom-right-radius: 8px;
+  opacity:0.9;
+}
+
+.picture {
+  width:100%;
+  padding-top: 20px;
+  border-bottom-right-radius: 8px;
 }
 
 .topbar {
-  background-color: white;
+  background-color: #5cb5d6;
   height: 30px;
   text-align: center;
   padding-top: 5px;
   padding-bottom: 30px;
   font-size: 1.3em;
+  box-shadow: 10px 10px 5px #545454;
+  opacity:.95;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 h1 {
-  padding-top:100px;
+  padding-top:70px;
   text-align:center;
   padding-bottom: 20px;
 }
+
+.title {
+  font-size: 3em;
+}
+
+
 
 .button {
   
@@ -52,10 +98,16 @@ h1 {
 }
 
 body {
-  background-image: url("../images/knit2.png");
   font-family: 'Merriweather Sans', sans-serif; 
 }
 
+body { 
+  background: url("../images/city.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .navbar-toggle {
   background-color:#9de0de;
@@ -73,7 +125,7 @@ background-color: #030033;
 }
 
   .navbar-default {
-    background-color: #9ce2a5;
+    background-color: #5cb5d6;
 }
 
   .dropdown-menu > li > a:hover,
