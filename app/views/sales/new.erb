@@ -1,20 +1,19 @@
 <h1>Post a sale</h1>
-<hr/>
 
-
-<% if @sale && @sale.errors.any? %>
-  <div>
-    <strong>Some issues with your sale, please fix them:</strong>
-    <ul>
-      <% @sale.errors.full_messages.each do |sale| %>
-        <li><%= sale %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 <div class="container">
   <div class="row">
-    <div class="new_form col-md-6 col-md-offset-3">
+    <div class="new_form col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+      <% if @sale && @sale.errors.any? %>
+        <div>
+          <h4><strong>Some issues with your sale, please fix them:</strong></h4>
+          <ul>
+            <% @sale.errors.full_messages.each do |sale| %>
+              <li><%= sale %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %> 
+    
       <form method="post" enctype="multipart/form-data" action="/sales">
         <div>
           <label>Address:</label>

@@ -11,14 +11,14 @@
 
         <div class="topbar col-md-10 col-md-offset-1">
 
-        <a href='/sales/<%= sale.id %>'> <%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)</a>
+        <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)</a>
 
         </div>
 
         <div class="post col-xs-4 col-md-2 col-md-offset-1">
-        <h4><%= sale.description %></h4>
-         <% Item.where(sale_id: sale.id).each do |item| %>
-          <li><%= item.item_name %></li>
+          <h4><%= sale.description %></h4>
+          <% Item.where(sale_id: sale.id).each do |item| %>
+            <li><%= item.item_name %></li>
           <% end %>
         </div>
 
