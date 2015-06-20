@@ -33,7 +33,7 @@
 
         <div class="topbar col-md-10 col-md-offset-1">
 
-        <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>) about <%= '%.2f' % sale.distance %>km away.</a>
+        <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>) </a> about <%= '%.2f' % sale.distance %>km away.
 
         </div>
 
