@@ -1,22 +1,29 @@
-<h1>Login</h1>
-<% if @message %>
-<div class="error-message"><%= @message %></div>
-<% end %>
-  
-  <form class="form-group" method="post" action="/session">
-  
-  <div>
-    <label>Username:</label>   
-    <input type="text" class="form-control" name="username">
-  </div>
+<h1 >Login</h1>
 
-  <div> 
-    <label>Password:</label>
-    <input type="password"  class="form-control" name="password">
-  </div>
-  <div>
-    <input type="submit" class="btn btn-default" value="Submit">
-  </div>
-</form>
+<div class="container">
+ <div class="row ">
+    <div class="new_form col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+      <% if @message %>
+      <div class="error-message"><%= @message %></div>
+      <% end %>
+        
+      <form class="form-group" method="post" action="/session">        
+        <div>
+          <label>Username:</label>   
+          <input type="text" class="form-control" name="username">
+        </div>
 
-<a href="/users/new"> New user? Sign up here. </a>
+        <div> 
+          <label>Password:</label>
+          <input type="password"  class="form-control" name="password">
+        </div>
+        <div>
+          <input type="submit" class="salesubmit btn btn-primary" value="Submit">
+        </div>
+      </form>
+
+      <a href="/users/new"> New user? Sign up here. </a>
+
+    </div>
+  </div>
+</div>
