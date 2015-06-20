@@ -6,8 +6,12 @@ helpers do
     date_time.in_time_zone('US/Pacific').strftime("%l:%M %P").strip
   end
 
+  def to_time_zone_date(date)
+    date.in_time_zone('US/Pacific').to_date
+  end
+
   def get_current_sales
-    Sale.where("start_time < ?", Time.now).where("end_time > ?", Time.now)
+    Sale.where("start_time < ?", DateTime.now).where("end_time > ?", DateTime.now)
   end
 
   def get_sales_by_time

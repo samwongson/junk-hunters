@@ -10,7 +10,7 @@
       <div class=" padding_bottom row">
 
         <div class="topbar col-md-10 col-md-offset-1">
-        <%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)
+        <%= sale.address %> (<%= to_time_zone_date(sale.start_time) %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)
         </div>
 
         <div class="post col-xs-4 col-md-2 col-md-offset-1">
