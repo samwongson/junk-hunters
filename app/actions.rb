@@ -45,9 +45,14 @@ end
 
 post '/session_location' do
   session[:location] = params[:location]
-  puts session[:location]
-
-  redirect '/'
+  if !get_sales_by_distance.empty?
+    puts session[:location]
+    redirect '/'
+  else
+    session[:location] = nil
+    @message = "We can't find any sales near #{params[:location]}. Try somewhere else?"
+    erb :'/landing'
+  end
 end
 
 

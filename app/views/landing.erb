@@ -29,6 +29,9 @@ function showPosition(position) {
 
 <h1>Find pop-up sales happening now.</h1>
 
+<% if @message %>
+  <%= @message %>
+<% end %>
 <form class="form-group" method="post" action="/session_location">
   <div>
     <label>Where you at?</label>   
