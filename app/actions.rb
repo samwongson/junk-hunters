@@ -50,7 +50,7 @@ post '/sales' do
     image_path: params[:image_path]
     )
 
-  if @sale.save!
+  if @sale.save
 
     item_list = [params[:item_name1], params[:item_name2], params[:item_name3], params[:item_name4], params[:item_name5]]
     item_list.each do |itemname|
@@ -74,14 +74,14 @@ get '/sales/edit' do
 
   @logged_in = session[:user_id]
   if @logged_in
-    @sale = Sale.where(user_id: @logged_in).first
+    @sale = Sale.where(user_id: @logged_in).last
   end
   erb :'/sales/edit'
 end
 
 post '/sales/:id/items' do
-  binding.pry
-  Item.create(item_name: 'Your item', sale_id: params[:id])
+  # binding.pry
+  Item.create(item_name: "Your item", sale_id: params[:id])
 
   redirect "/sales/edit"
 end

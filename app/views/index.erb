@@ -6,7 +6,7 @@
       <div class=" padding_bottom row">
 
         <div class="topbar col-md-10 col-md-offset-1">
-        <%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)
+        <a href='/sales/<%= sale.id %>'> <%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>)</a>
         </div>
 
         <div class="post col-xs-4 col-md-2 col-md-offset-1">
