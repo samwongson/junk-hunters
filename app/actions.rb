@@ -4,6 +4,10 @@
 
 helpers do
 
+  def user_has_sale
+    Sale.find(session[:user_id]).id
+  end
+
   def to_12_hour_time(date_time)
     date_time.in_time_zone('US/Pacific').strftime("%l:%M %P").strip
   end

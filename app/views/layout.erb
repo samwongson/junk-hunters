@@ -104,8 +104,10 @@
             <% end %>
         </ul>
         <form class="navbar-form navbar-right" method="POST" action="/session">  
-          <% if session[:user_id] %>           
+          <% if session[:user_id] %>  
+            <% if user_has_sale %>    
               <li class="btn"><a href="/sales/edit">Edit</a></li>
+            <% end %>
               <input type="hidden" name="_method" value="delete">
               <input class="btn btn-primary" type="submit" value="Logout">
           <% end %>
