@@ -44,7 +44,7 @@ get '/' do
   if session[:location] 
     # @sales = get_sales_by_time
     # show all sales.
-
+    binding.pry
     @sales = get_close_sales(get_current_sales)
     @items = Item.all 
     erb :index
@@ -56,7 +56,7 @@ end
 
 
 post '/session_location' do
-
+  # binding.pry
   # if user entered nothing
   if params[:location].empty?
     # and the session has never been set
@@ -232,3 +232,4 @@ get '/sales/:id' do
   @sale = Sale.find(params[:id])
   erb :'sales/show'
 end
+
