@@ -1,5 +1,47 @@
 <h1 class="title">Junkr</h1>
 
+<!-- CLUSTER MAP -->
+
+ <div id="map" style="width: 500px; height: 400px; margin: auto;"></div>
+
+  <script type="text/javascript">
+    var locations = <%= get_map_data %>;
+
+    var myLatLong = <%= get_my_lat_long %>;
+
+    var my_location_icon = 'images/you_are_here_icon.png';
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(myLatLong[0], myLatLong[1]),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      if (locations[i][0] == 'You are here') {
+        marker.setIcon(my_location_icon)
+      }
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+
+<!-- END CLUSTER MAP -->
 
 <div class="container">
   <div class="new_form col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
