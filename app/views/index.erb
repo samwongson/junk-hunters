@@ -44,6 +44,10 @@
           <% Item.where(sale_id: sale.id).each do |item| %>
             <li><%= item.item_name %></li>
           <% end %>
+          <% if current_user && current_user.id == sale.user_id %>
+            <a class="btn btn-danger" href='/sales/edit'>Edit</a>
+          <% end %>
+          
         </div>
 
         <div data-latitude='<%= sale.latitude%>' data-longitude='<%= sale.longitude%>' class="map-canvas col-md-3 col-md-offset-0">maps!!</div>
