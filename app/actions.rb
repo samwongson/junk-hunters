@@ -44,7 +44,7 @@ get '/' do
   if session[:location] 
     # @sales = get_sales_by_time
     # show all sales.
-    binding.pry
+    # binding.pry
     @sales = get_close_sales(get_current_sales)
     @items = Item.all 
     erb :index

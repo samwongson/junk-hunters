@@ -12,7 +12,7 @@
         <label for="inputItem" class="control-label">Item <%= index + 1 %>:</label> 
         <div class="col-sm10">
         <input class="form-control" type="hidden" name="items[][id]" value="<%=item.id %>" >
-        <input id="inputItem" class="form-control" type ="text" name="items[][item_name]" placeholder="<%= item.item_name %>" required>
+        <input id="inputItem" class="form-control" type ="text" name="items[][item_name]" value="<%= item.item_name %>" required>
         </div>
       </div>
 
