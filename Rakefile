@@ -29,6 +29,17 @@ task "db:populate" do
   @item4 = Item.create!(sale_id: @sale2.id, item_name: "more carrots")
   @item5 = Item.create!(sale_id: @sale2.id, item_name: "lots of pigs")
   @item6 = Item.create!(sale_id: @sale2.id, item_name: "tools")
+
+  Sale.create(address: "659 E Hastings St, Vancouver", start_time: Time.now, end_time: Time.now + (60*60), description: "This sale is pretty close", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+
+  Sale.create(address: "1601-1607 E Hastings St, Vancouver", start_time: Time.now, end_time: Time.now + (60*60), description: "This sale is a little further", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+
+  Sale.create(address: "3200 E Hastings St, Vancouver", start_time: Time.now, end_time: Time.now + (60*50), description: "This sale is even further", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+
+  Sale.create(address: "7004 Inlet Dr, Burnaby", start_time: Time.now, end_time: Time.now + (60*120), description: "This sale is pretty far", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+
+  Sale.create(address: "1120 Johnson St, Coquitlam", start_time: Time.now, end_time: Time.now + (60*360), description: "This sale REALLY far", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+
 end
 
 desc "drop the database"
