@@ -23,6 +23,11 @@
   opacity:0.9;
 }
 
+.icon {
+  padding-top:17px;
+}
+
+
 .edit-submit {
   width: 100%;
 }
@@ -61,10 +66,6 @@
   margin-top: 7px;
 }
 
-.reserve-button {
-  margin:none;
-}
-
 
 .post {
   background-color:#5cb5d6;
@@ -74,6 +75,8 @@
   opacity: 0.9;
   color:black;
 }
+
+
 
 
 
@@ -127,6 +130,7 @@ h1 {
 
 .address {
   color:black;
+
 }
 
 
@@ -141,6 +145,10 @@ h1 {
 
 footer {
   padding-top:265px;
+}
+
+.navbar-brand {
+
 }
 
 

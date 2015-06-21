@@ -2,19 +2,21 @@
 
 
 <div class="container">
-  <div class="new_form col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
-      <% if @message %>
-        <%= @message %>
-      <% end %>
-    <form data-toggle="validator" role="form" class=" form-group" method="post" action="/session_location">
-      <div>
-        <label>Where you at?</label>
-        <input type="text" class="form-control" name="location" placeholder="Street address, city" required>
-      </div>
-      <div>
-        <input type="submit" class="padding-top add-new salesubmit btn btn-primary" value="Submit">
-      </div>
-    </form>
+  <div class="row">
+    <div class="new_form col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+        <% if @message %>
+          <%= @message %>
+        <% end %>
+      <form data-toggle="validator" role="form" class="form-group" method="post" action="/session_location">
+        <div>
+          <label>Where you at?</label>
+          <input type="text" class="form-control" name="location" placeholder="Street address, city" required>
+        </div>
+        <div>
+          <input type="submit" class="padding-top add-new salesubmit btn btn-primary" value="Submit">
+        </div>
+      </form>
+    </div>
   </div>
   
   <!-- TODO I don't remember why this is here but I'm scared we'll find out why later. -->
@@ -25,12 +27,9 @@
   <% else %> 
    
     <% @sales.each do |sale| %>    
-      <div class=" padding_bottom row">
-
+      <div class="padding_bottom row">
         <div class="topbar col-md-10 col-md-offset-1">
-
           <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> about <%= '%.2f' % sale.distance %>km away.</a>
-
         </div>
 
         <div class="post col-xs-4 col-md-2 col-md-offset-1">
@@ -43,8 +42,7 @@
           <% end %>
           <% if current_user && current_user.id == sale.user_id %>
             <a class="btn btn-danger" href='/sales/edit'>Edit</a>
-          <% end %>
-          
+          <% end %>          
         </div>
 
         <div data-latitude='<%= sale.latitude%>' data-longitude='<%= sale.longitude%>' class="map-canvas col-md-3 col-md-offset-0">maps!!</div>
