@@ -146,11 +146,11 @@ end
 
 
 get '/sales/edit' do
-
+  binding.pry
   @logged_in = session[:user_id]
   @sale = Sale.where("user_id = ?", @logged_in)
    
-  if @sale
+  if !@sale.empty?
     erb :'sales/edit'
   else 
     redirect '/'
