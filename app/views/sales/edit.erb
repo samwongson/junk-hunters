@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6 edit-form">
-  <form method="post" enctype="multipart/form-data" action="/sales/edit">
+  <form data-toggle="validator" role="form" method="post" enctype="multipart/form-data" action="/sales/edit">
 
     <% @sale[0].items.each_with_index do |item, index| %>
 
@@ -12,7 +12,7 @@
         <label for="inputItem" class="control-label">Item <%= index + 1 %>:</label> 
         <div class="col-sm10">
         <input class="form-control" type="hidden" name="items[][id]" value="<%=item.id %>" >
-        <input id="inputItem" class="form-control" type ="text" name="items[][item_name]" placeholder="<%= item.item_name %>">
+        <input id="inputItem" class="form-control" type ="text" name="items[][item_name]" placeholder="<%= item.item_name %>" required>
         </div>
       </div>
 

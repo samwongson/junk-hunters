@@ -35,14 +35,14 @@ function showPosition(position) {
         <% if @message %>
           <%= @message %>
         <% end %>
-      <form class=" form-group" method="post" action="/session_location">
+      <form data-toggle="validator" role="form" class=" form-group" method="post" action="/session_location">
         <div>
           <label>Where you at?</label>
-          <input type="text" class="form-control" name="location" placeholder="Street address, city">
+          <input type="text" class="form-control" name="location" placeholder="Street address, city" required>
         </div>
         <div>
           <label>How far are you willing to go (in km)?</label>
-          <input type="number" class="form-control" name="search_radius" placeholder="10">
+          <input type="number" class="form-control" name="search_radius" placeholder="10" required>
         </div>
       
           <input type="submit" class="padding-top add-new salesubmit btn btn-primary" value="Submit">

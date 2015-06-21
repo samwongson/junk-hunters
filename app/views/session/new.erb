@@ -7,15 +7,15 @@
       <div class="error-message"><%= @message %></div>
       <% end %>
         
-      <form class="form-group" method="post" action="/session">        
+      <form data-toggle="validator" role="form" class="form-group" method="post" action="/session">        
         <div>
           <label>Username:</label>   
-          <input type="text" class="form-control" name="username">
+          <input type="text" class="form-control" name="username" required>
         </div>
 
         <div> 
           <label>Password:</label>
-          <input type="password"  class="form-control" name="password">
+          <input type="password" minlength="3" class="form-control" name="password" required>
         </div>
         <div>
           <input type="submit" class="add-new salesubmit btn btn-primary" value="Submit">
