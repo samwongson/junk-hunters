@@ -62,11 +62,7 @@ get '/' do
   if session[:location] 
     # @sales = get_sales_by_time
     # show all sales.
-<<<<<<< HEAD
-    # binding.pry
-=======
 
->>>>>>> feature-cluster-map
     @sales = get_close_sales(get_current_sales)
     @items = Item.all 
     erb :index
