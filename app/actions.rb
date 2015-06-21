@@ -33,6 +33,24 @@ helpers do
     end
     @current_user
   end
+
+  def get_map_data
+    @map_data = []
+    sales = get_close_sales(get_current_sales)
+    sales.each do |sale|
+      sale_data = [sale.address, sale.latitude, sale.longitude, 1]
+      @map_data << sale_data
+    end
+
+    my_coords = get_my_lat_long
+    @map_data << ['You are here', my_coords[0], my_coords[1], 1]
+
+    @map_data
+  end
+
+  def get_my_lat_long
+    Geocoder.coordinates(session[:location])
+  end
 end
 
 
@@ -40,7 +58,7 @@ get '/' do
   if session[:location] 
     # @sales = get_sales_by_time
     # show all sales.
-    binding.pry
+
     @sales = get_close_sales(get_current_sales)
     @items = Item.all 
     erb :index
@@ -52,7 +70,6 @@ end
 
 
 post '/session_location' do
-  # binding.pry
   # if user entered nothing
   if params[:location].empty?
     # and the session has never been set
@@ -128,7 +145,6 @@ get '/sales/edit' do
 
   @logged_in = session[:user_id]
   @sale = Sale.where("user_id = ?", @logged_in)
-  # binding.pry
    
   if @sale
     erb :'sales/edit'
