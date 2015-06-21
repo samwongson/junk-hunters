@@ -61,6 +61,10 @@
   margin-top: 7px;
 }
 
+.reserve-button {
+  margin:none;
+}
+
 
 .post {
   background-color:#5cb5d6;
