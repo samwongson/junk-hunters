@@ -12,10 +12,6 @@
         <input type="text" class="form-control" name="location" placeholder="Street address, city" required>
       </div>
       <div>
-        <label>How far are you willing to go (in km)?</label>
-        <input type="number" class="form-control" name="search_radius" placeholder="10" required>
-      </div>
-      <div>
         <input type="submit" class="padding-top add-new salesubmit btn btn-primary" value="Submit">
       </div>
     </form>
@@ -35,11 +31,14 @@
 
         <div class="topbar col-md-10 col-md-offset-1">
 
-        <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> (<%= sale.start_time.to_date %> || <%= to_12_hour_time(sale.start_time) %>, <%= to_12_hour_time(sale.end_time) %>) </a> about <%= '%.2f' % sale.distance %>km away.
+          <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> about <%= '%.2f' % sale.distance %>km away.</a>
 
         </div>
 
         <div class="post col-xs-4 col-md-2 col-md-offset-1">
+          <p><%= sale.start_time.to_date %></p>
+          <p><%= to_12_hour_time(sale.start_time) %> - <%= to_12_hour_time(sale.end_time) %></p>
+
           <h4><%= sale.description %></h4>
           <% Item.where(sale_id: sale.id).each do |item| %>
             <li><%= item.item_name %></li>

@@ -26,7 +26,7 @@ helpers do
   end
 
   def get_close_sales(sales)
-    @sales = sales.near(session[:location], session[:search_radius])
+    @sales = sales.near(session[:location])
   end
 
   def current_user
@@ -72,20 +72,20 @@ post '/session_location' do
   end
 
 
-  if params[:search_radius].empty?
-    if session[:search_radius].nil?
-      session[:search_radius] = 10
-    end
-  else
-    session[:search_radius] = params[:search_radius].to_i
-  end
+  # if params[:search_radius].empty?
+  #   if session[:search_radius].nil?
+  #     session[:search_radius] = 10
+  #   end
+  # else
+  #   session[:search_radius] = params[:search_radius].to_i
+  # end
 
   if !get_close_sales(get_current_sales).empty?
     puts session[:location]
     redirect '/'
   else
     session[:location] = nil
-    session[:search_radius] = nil
+    # session[:search_radius] = nil
     @message = "We can't find any sales near #{params[:location]}. Try somewhere else?"
     erb :'/landing'
   end

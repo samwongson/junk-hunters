@@ -47,6 +47,7 @@
 }
 
 
+
 .navbar-default .navbar-brand {
     color: #232323;
 }
@@ -66,6 +67,7 @@
 }
 
 
+
 .photo {
   background-color:#5cb5d6;
   height:350px;
@@ -80,11 +82,12 @@
   height: 95%;
   padding-top: 20px;
   border-radius: 8px;
+  box-shadow: 5px 5px 8px #545454;
 }
 
 
 .topbar {
-  background-color: #5cb5d6;
+  background-color: #2ca1cc;
   height: 30px;
   text-align: center;
   padding-top: 5px;
@@ -126,11 +129,9 @@ h1 {
   border-color:white;
 }
 
-body {
-  font-family: 'Merriweather Sans', sans-serif; 
-}
 
 body { 
+  font-family: 'Merriweather Sans', sans-serif; 
   background: url("../images/cityblur10bw.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -154,7 +155,7 @@ background-color: #030033;
 }
 
   .navbar-default {
-    background-color: #5cb5d6;
+    background-color: #2ca1cc;
 }
 
   .dropdown-menu > li > a:hover,
