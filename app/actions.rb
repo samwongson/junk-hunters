@@ -2,11 +2,7 @@
 # DEFAULT_LOCATION = "125 W Hastings, Vancouver"
 # DEFAULT_SEARCH_RADIUS = 10
 
-helpers do
-
-  def user_has_sale
-    Sale.find(session[:user_id]).id
-  end
+helpers do 
 
   def to_12_hour_time(date_time)
     date_time.in_time_zone('US/Pacific').strftime("%l:%M %P").strip
@@ -37,6 +33,11 @@ helpers do
     end
     @current_user
   end
+
+  def user_has_sale
+    Sale.find(session[:user_id]).id
+  end
+  
 end
 
 
@@ -142,6 +143,8 @@ get '/sales/edit' do
   
 end
 
+
+
 post '/sales/:id/items' do
   Item.create(item_name: "Your item", sale_id: params[:id])
   redirect '/sales/edit'
@@ -150,7 +153,7 @@ end
 
 post '/sales/edit' do
   @logged_in = session[:user_id]
-  @sale = Sale.where(user_id: @logged_in).first
+  @sale = Sale.where(user_id: @logged_in).last
 
   if @logged_in
     params[:items].each do |params_item|

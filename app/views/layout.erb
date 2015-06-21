@@ -104,7 +104,7 @@
             <% end %>
         </ul>
         <form class="navbar-form navbar-right" method="POST" action="/session">  
-          <% if session[:user_id] %>  
+          <% if current_user %>  
             <% if user_has_sale %>    
               <li class="btn"><a href="/sales/edit">Edit</a></li>
             <% end %>
@@ -116,8 +116,19 @@
     </div>    
   </div>
 
+  
+
   <%= yield %>
 
 <%= puts session.inspect %>
+<footer>
+    <div class="pull-right">
+      <ul class="list-inline">
+        <li><a href="https://github.com/jerath" class="footer-text">Jessica Thomas</a></li>      
+        <li><a href="https://github.com/samwongson" class="footer-text">Samson Wong</a></li>
+        <li><a href="https://github.com/robinbeechey" class="footer-text">Robin Beechey</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>

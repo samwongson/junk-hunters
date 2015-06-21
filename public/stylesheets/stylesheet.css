@@ -36,11 +36,15 @@
   padding-top: 8px;
 }
 
+.padding-bottom {
+  padding-bottom: 200px;
+}
+
 
 .new_form {
   padding-bottom: 8px;
   padding-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   background-color: #5cb5d6;
   box-shadow: 10px 10px 5px #545454;
   opacity:0.95; 
@@ -114,6 +118,7 @@ h1 {
 .explain {
   text-align: center;
   padding-bottom: 20px;
+  color:black;
 }
 
 .address {
@@ -128,6 +133,10 @@ h1 {
 .logout:hover {
   background: #6eeacb;
   border-color:white;
+}
+
+footer {
+  padding-top:265px;
 }
 
 
