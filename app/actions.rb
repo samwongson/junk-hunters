@@ -183,6 +183,8 @@ post '/users' do
     password_salt = BCrypt::Engine.generate_salt
     password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
 
+    puts password_salt
+    puts password_hash
     user = User.create(username: params[:username], password_salt: password_salt, password: password_hash)
 
     # logged in successfully.

@@ -18,28 +18,92 @@ end
 
 desc "Populate"
 task "db:populate" do
-  @user = User.create!(username: "john", password: "john")
-  @sale = Sale.create!(address: "610 Gore Ave, Vancouver", start_time: "2015-04-20", end_time: "2015-04-20", description: "Yard Sale", image_path: open('garage.jpg'), user_id: @user.id)
-  @item1 = Item.create!(sale_id: @sale.id, item_name: "carrots")
-  @item2 = Item.create!(sale_id: @sale.id, item_name: "pigs")
-  @item3 = Item.create!(sale_id: @sale.id, item_name: "tools")
+  @user = User.create(
+    username: "pepito", 
+    password_salt: "$2a$10$DLb1DfIzmkcEsHSn6uIWNe", 
+    password: "$2a$10$DLb1DfIzmkcEsHSn6uIWNeG.fci3SeF7uep72eNRzLsmi4XJUPU1q"
+  )
 
-  @user2 = User.create!(username: "pepe", password: "pepe")
-  @sale2 = Sale.create(address: "978 w 18th Vancouver", start_time: Time.now, end_time: Time.now + (60*60), description: "asdffds", image_path: open('brickwall.png'), user_id: @user2.id)
-  @item4 = Item.create!(sale_id: @sale2.id, item_name: "more carrots")
-  @item5 = Item.create!(sale_id: @sale2.id, item_name: "lots of pigs")
-  @item6 = Item.create!(sale_id: @sale2.id, item_name: "tools")
+  @sale_1 =  Sale.create(
+    address: "659 E Hastings St, Vancouver", 
+    start_time: Time.now, 
+    end_time: Time.now + (60*60), 
+    description: "Hipster heaven", 
+    image_path: open('garage_sale.jpg'), 
+    user_id: @user.id
+    )
 
-  Sale.create(address: "659 E Hastings St, Vancouver", start_time: Time.now, end_time: Time.now + (60*60), description: "This sale is pretty close", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+  Item.create!(sale_id: @sale_1.id, item_name: "Old fashioned diving gear")
+  Item.create!(sale_id: @sale_1.id, item_name: "Inflatable kangaroo")
+  Item.create!(sale_id: @sale_1.id, item_name: "Cop hat")
+  Item.create!(sale_id: @sale_1.id, item_name: "Miscellaneous sports gear")
 
-  Sale.create(address: "1601-1607 E Hastings St, Vancouver", start_time: Time.now, end_time: Time.now + (60*60), description: "This sale is a little further", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+  @sale_2 = Sale.create(
+    address: "979 w 18th Vancouver", 
+    start_time: Time.now, 
+    end_time: Time.now + (60*60), 
+    description: "Grandma is selling her stuff", 
+    image_path: open('public/images/default_sale/sale_2.jpg'), 
+    user_id: @user.id
+    )
+  Item.create!(sale_id: @sale_2.id, item_name: "Fancy collectors plates")
+  Item.create!(sale_id: @sale_2.id, item_name: "Vintage nighty")
+  Item.create!(sale_id: @sale_2.id, item_name: "Vases")
+  Item.create!(sale_id: @sale_2.id, item_name: "Ash trays")
+  Item.create!(sale_id: @sale_2.id, item_name: "14\" CRT TV")
 
-  Sale.create(address: "3200 E Hastings St, Vancouver", start_time: Time.now, end_time: Time.now + (60*50), description: "This sale is even further", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+  @sale_3 = Sale.create(
+    address: "1601-1607 E Hastings St, Vancouver", 
+    start_time: Time.now, 
+    end_time: Time.now + (60*60), 
+    description: "Pop up thrift shop", 
+    image_path: open('public/images/default_sale/sale_3.jpg'), 
+    user_id: @user.id
+    )
 
-  Sale.create(address: "7004 Inlet Dr, Burnaby", start_time: Time.now, end_time: Time.now + (60*120), description: "This sale is pretty far", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+  Item.create!(sale_id: @sale_3.id, item_name: "Colorful clothes")
+  Item.create!(sale_id: @sale_3.id, item_name: "Handbags")
+  Item.create!(sale_id: @sale_3.id, item_name: "Vintage art")
 
-  Sale.create(address: "1120 Johnson St, Coquitlam", start_time: Time.now, end_time: Time.now + (60*360), description: "This sale REALLY far", image_path: open('garage_sale.jpg'), user_id: @user2.id)
+  @sale_4 = Sale.create(
+    address: "3200 E Hastings St, Vancouver", 
+    start_time: Time.now, 
+    end_time: Time.now + (60*50), 
+    description: "Fine furniture", 
+    image_path: open('public/images/default_sale/sale_4.jpg'), 
+    user_id: @user.id
+    )
 
+  Item.create!(sale_id: @sale_4.id, item_name: "Rocking chair")
+  Item.create!(sale_id: @sale_4.id, item_name: "Lamps")
+  Item.create!(sale_id: @sale_4.id, item_name: "Dressers")
+
+  @sale_5 = Sale.create(
+    address: "7004 Inlet Dr, Burnaby", 
+    start_time: Time.now, 
+    end_time: Time.now + (60*120), 
+    description: "Jewelery and stuff", 
+    image_path: open('public/images/default_sale/sale_5.jpg'), 
+    user_id: @user.id
+    )
+
+  Item.create!(sale_id: @sale_5.id, item_name: "Feather hair extensions")
+  Item.create!(sale_id: @sale_5.id, item_name: "Earrings")
+  Item.create!(sale_id: @sale_5.id, item_name: "Bracelets")
+  Item.create!(sale_id: @sale_5.id, item_name: "Skull stuff")
+
+  @sale_6 = Sale.create!(
+    address: "610 Gore Ave, Vancouver", 
+    start_time: Time.now, 
+    end_time: Time.now + (60*300), 
+    description: "Pepper sale", 
+    image_path: open('public/images/default_sale/sale_6.jpg'), 
+    user_id: @user.id
+    )
+
+  Item.create!(sale_id: @sale_6.id, item_name: "Serrano")
+  Item.create!(sale_id: @sale_6.id, item_name: "Jalepeno")
+  Item.create!(sale_id: @sale_6.id, item_name: "Tiny orange")
 end
 
 desc "drop the database"
