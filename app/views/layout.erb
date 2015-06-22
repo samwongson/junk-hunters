@@ -110,7 +110,7 @@
         </ul>
         <form class="navbar-form navbar-right" method="POST" action="/session">  
           <% if current_user %>  
-            <% if user_has_sale %>    
+            <% if !current_user.sales.empty? %>    
               <li class="btn"><a href="/sales/edit">Edit</a></li>
             <% end %>
               <input type="hidden" name="_method" value="delete">
