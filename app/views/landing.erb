@@ -32,23 +32,22 @@ function showPosition(position) {
 <div class="container">
   <div class="row ">
     <div class="new_form col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
-        <% if @message %>
-          <%= @message %>
-        <% end %>
-      <form data-toggle="validator" role="form" class=" form-group" method="post" action="/session_location">
-        <div>
-          <label>Where you at?</label>
-          <input type="text" class="form-control" name="location" placeholder="Street address, city" required>
-        </div>
-  <!--       <div>
-          <label>How far are you willing to go (in km)?</label>
-          <input type="number" class="form-control" name="search_radius" placeholder="10" required>
-        </div> -->
-      
-          <input type="submit" class="padding-top add-new salesubmit btn btn-primary" value="Submit">
-  
-      </form>
-    </div>
+      <% if @message %>
+        <%= @message %>
+      <% end %>
+    <form data-toggle="validator" role="form" class="form-inline" method="post" action="/session_location">
+      <div class="form-group">
+        <label>Where you at?</label>
+        <input type="text" class="form-control" name="street_address" value="126 W Hastings" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="city" value="Vancouver" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="padding-top add-new salesubmit btn btn-primary" value="Submit">
+      </div>
+    </form>
+  </div>
   </div>
 </div>
 

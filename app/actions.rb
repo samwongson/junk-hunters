@@ -74,28 +74,13 @@ end
 
 
 post '/session_location' do
-  # if user entered nothing
-  if params[:location].empty?
-    # and the session has never been set
-    if session[:location].nil?
-      # set the session to the default location
-      session[:location] = "125 W Hastings, Vancouver"
-    end
-    # and the session HAS been set, don't change it.
-  # if the user did enter something
-  else
-    # update the session to reflect that.
-    session[:location] = params[:location]
-  end
 
+  location = "#{params[:street_address]}, #{params[:city]}"
 
-  # if params[:search_radius].empty?
-  #   if session[:search_radius].nil?
-  #     session[:search_radius] = 10
-  #   end
-  # else
-  #   session[:search_radius] = params[:search_radius].to_i
-  # end
+  session[:street_address] = params[:street_address]
+  session[:city] = params[:city]
+
+  session[:location] = location
 
   if !get_close_sales(get_current_sales).empty?
     puts session[:location]
