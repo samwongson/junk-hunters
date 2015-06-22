@@ -74,14 +74,15 @@
     <% @sales.each do |sale| %>    
       <div class="padding_bottom row">
         <div class="topbar col-md-10 col-md-offset-1">
-          <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %> about <%= '%.2f' % sale.distance %>km away.</a>
+          <a class="address" href='/sales/<%= sale.id %>'><%= sale.address %></a>
         </div>
 
         <div class="post col-xs-4 col-md-2 col-md-offset-1">
+          <p><%= '%.2f' % sale.distance %>km away.</p>
           <p><%= sale.start_time.to_date %></p>
           <p><%= to_12_hour_time(sale.start_time) %> - <%= to_12_hour_time(sale.end_time) %></p>
 
-          <h4><%= sale.description %></h4>
+          <h4><strong><%= sale.description %></strong></h4>
           <% Item.where(sale_id: sale.id).each do |item| %>
             <li><%= item.item_name %></li>
           <% end %>
