@@ -29,7 +29,7 @@ task "db:populate" do
     start_time: Time.now, 
     end_time: Time.now + (60*60), 
     description: "Hipster heaven", 
-    image_path: open('garage_sale.jpg'), 
+    image_path: open('public/images/default_sale/sale_1.jpg'), 
     user_id: @user.id
     )
 
