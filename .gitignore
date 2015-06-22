@@ -6,4 +6,3 @@
 /db/*.sqlite3-journal
 .DS_Store
 /public/uploads/tmp/*
-/public/images/*
