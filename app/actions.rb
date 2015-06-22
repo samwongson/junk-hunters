@@ -35,6 +35,7 @@ helpers do
   end
 
   def user_has_sale
+    binding.pry
     Sale.find(session[:user_id]).id
   end
   
@@ -131,7 +132,7 @@ end
 
 
 get '/sales/edit' do
-  binding.pry
+  # binding.pry
   @logged_in = session[:user_id]
   @sale = Sale.where("user_id = ?", @logged_in)
    

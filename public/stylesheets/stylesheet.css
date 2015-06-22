@@ -28,10 +28,11 @@
 }
 
 #map {
-  border-radius: 8px;  
-  width: 585px;
+  border-radius: 8px;
+  max-width: 785px;  
   height: 350px;
   margin: auto;
+  margin-bottom:30px;
 }
 
 
@@ -42,6 +43,10 @@
 .add-new {
   width: 100%;
   
+}
+
+.padding_left {
+  padding-left: 200px;
 }
 
 .padding-top {
