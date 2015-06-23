@@ -9,8 +9,8 @@ class AddSaleUsersItems < ActiveRecord::Migration
   
     create_table :sales do |t|
       t.string :address
-      t.string :start_time
-      t.string :end_time
+      t.datetime :start_time
+      t.datetime :end_time
       t.text :description
       t.string :image_path
       t.belongs_to :user, index: true
