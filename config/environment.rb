@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
-
+require 'pg'
 
 require 'active_support/all'
 
