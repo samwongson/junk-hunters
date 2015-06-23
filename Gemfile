@@ -14,10 +14,10 @@ gem 'geocoder'
 
 gem 'puma'
 gem 'tux'
+gem 'pg'
 
 group :development, :test do
   gem 'pry'
   gem 'shotgun'
   gem 'sqlite3'
-  gem 'pg'
 end
